@@ -34,7 +34,7 @@ const AuthImagePattern = ({ title, subtitle }) => {
               return (
                 <div
                   key={index}
-                  className="absolute w-16 h-16 bg-white/20 backdrop-blur-lg rounded-2xl flex items-center justify-center border border-white/30 shadow-lg animate-pulse"
+                  className="absolute w-16 h-16 rounded-2xl flex items-center justify-center backdrop-blur-lg shadow-lg animate-pulse bg-white/80 border border-black/10 dark:bg-white/20 dark:border-white/30"
                   style={{
                     left: `calc(50% + ${x}px - 32px)`,
                     top: `calc(50% + ${y}px - 32px)`,
@@ -49,27 +49,27 @@ const AuthImagePattern = ({ title, subtitle }) => {
         </div>
 
         <div className="space-y-6">
-          <h2 className="text-4xl font-bold bg-gradient-to-r from-white via-purple-200 to-pink-200 bg-clip-text text-transparent leading-tight">
+          <h2 className="text-4xl font-bold bg-clip-text text-transparent leading-tight bg-gradient-to-r from-gray-900 via-purple-800 to-pink-700 dark:from-white dark:via-purple-200 dark:to-pink-200">
             {title}
           </h2>
-          <p className="text-xl text-gray-300 leading-relaxed max-w-md mx-auto">
+          <p className="text-xl leading-relaxed max-w-md mx-auto text-gray-700 dark:text-gray-300">
             {subtitle}
           </p>
           
           <div className="grid grid-cols-2 gap-4 mt-8">
-            <div className="flex items-center gap-3 text-gray-300">
+            <div className="flex items-center gap-3 text-gray-700 dark:text-gray-300">
               <div className="w-2 h-2 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full"></div>
               <span className="text-sm">Real-time messaging</span>
             </div>
-            <div className="flex items-center gap-3 text-gray-300">
+            <div className="flex items-center gap-3 text-gray-700 dark:text-gray-300">
               <div className="w-2 h-2 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full"></div>
               <span className="text-sm">Secure & private</span>
             </div>
-            <div className="flex items-center gap-3 text-gray-300">
+            <div className="flex items-center gap-3 text-gray-700 dark:text-gray-300">
               <div className="w-2 h-2 bg-gradient-to-r from-green-400 to-emerald-400 rounded-full"></div>
               <span className="text-sm">Easy to use</span>
             </div>
-            <div className="flex items-center gap-3 text-gray-300">
+            <div className="flex items-center gap-3 text-gray-700 dark:text-gray-300">
               <div className="w-2 h-2 bg-gradient-to-r from-yellow-400 to-orange-400 rounded-full"></div>
               <span className="text-sm">Always connected</span>
             </div>

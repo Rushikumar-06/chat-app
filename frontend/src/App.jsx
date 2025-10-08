@@ -1,9 +1,8 @@
 import Navbar from "./components/Navbar"
 import {Routes,Route, Navigate} from "react-router-dom"
 import HomePage from "./pages/HomePage"
-import SignUpPage from "./pages/SignUpPage"
-import LoginPage from "./pages/LoginPage"
-import SettingsPage from "./pages/SettingsPage"
+import SignUpPage from "./pages/signUpPage.jsx"
+import LoginPage from "./pages/loginPage.jsx"
 import ProfilePage from "./pages/ProfilePage"
 import useAuthStore from "./store/UseAuthStore"
 import { useEffect } from "react"
@@ -24,13 +23,12 @@ function App() {
     
   }
   return (
-    <div >
+    <div className="min-h-screen pt-16 bg-gray-50 text-gray-900 dark:bg-gray-950 dark:text-gray-100">
       <Navbar />
       <Routes>
         <Route path="/" element={authUser?<HomePage/> : <Navigate to="/login"/>}/>
         <Route path="/signup" element={!authUser?<SignUpPage/> : <Navigate to="/"/>}/>
         <Route path="/login" element={!authUser?<LoginPage/> : <Navigate to="/"/>}/>
-        <Route path="/settings" element={<SettingsPage/>}/>
         <Route path="/profile" element={authUser?<ProfilePage/> : <Navigate to="/login"/>}/>
       </Routes>
       <Toaster/>

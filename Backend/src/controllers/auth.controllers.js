@@ -31,6 +31,7 @@ export const signup = async (req,res)=>{
                fullName:newUser.fullName,
                email:newUser.email,
                profilePic:newUser.profilePic,
+               createdAt:user.created_at
             }); 
         }
         else{
@@ -59,6 +60,7 @@ export const login = async (req,res)=>{
             fullName:user.fullName,
             email:user.email,
             profilePic:user.profilePic,
+            createdAt:user.created_at
         })
     }
     catch(err){
@@ -78,16 +80,40 @@ export const logout = (req,res)=>{
 }
 
 export const updateProfile= async (req,res)=>{
-    try {
-        const {profilePic} = req.body
-        const userId = req.user._id
-        if (!profilePic){
-            return res.status(400).json({message:"profile pic is required"})
-        }
-        const uploadResponse = await clodinary.uploader.upload(profilePic)
-        const updateUser = await User.findByIdAndUpdate(userId,{profilePic:uploadResponse.secure_url},{new:true})
 
-        res.status(200).json(updateUser)
+    try {
+       
+       const userId = req.user._id;
+
+    if (!req.file) {
+      return res.status(400).json({ message: "Profile picture is required" });
+    }
+
+    const uploadStream = clodinary.uploader.upload_stream(
+      { resource_type: "image", folder: "profile_pics" },
+      async (error, result) => {
+        if (error) {
+          console.error("Cloudinary upload error:", error);
+          return res.status(500).json({ message: "Cloudinary upload failed" });
+        }
+
+        const updatedUser = await User.findByIdAndUpdate(
+          userId,
+          { profilePic: result.secure_url },
+          { new: true }
+        );
+
+        return res.status(200).json({
+            _id:updatedUser._id,
+            fullName:updatedUser.fullName,
+            email:updatedUser.email,
+            profilePic:updatedUser.profilePic,
+            createdAt:updatedUser.created_at
+        })
+      }
+    );
+
+    uploadStream.end(req.file.buffer);
     } catch (error) {
         console.log("error in updating image",error.message)
         return res.status(500).json({message:"internal server error"})
@@ -96,8 +122,15 @@ export const updateProfile= async (req,res)=>{
 }
 
 export const check = (req,res)=>{
+    const user = req.user
    try {
-     res.status(200).json(req.user)
+     res.status(200).json({
+            _id:user._id,
+            fullName:user.fullName,
+            email:user.email,
+            profilePic:user.profilePic,
+            createdAt:user.created_at
+        })
    } catch (error) {
     console.log("error in check auth controller",error.message)
         return res.status(500).json({message:"internal server error"})
