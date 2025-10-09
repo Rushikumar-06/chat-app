@@ -31,7 +31,7 @@ export const signup = async (req,res)=>{
                fullName:newUser.fullName,
                email:newUser.email,
                profilePic:newUser.profilePic,
-               createdAt:user.created_at
+               createdAt:newUser.created_at
             }); 
         }
         else{

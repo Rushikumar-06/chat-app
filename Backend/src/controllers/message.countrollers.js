@@ -1,6 +1,7 @@
 import clodinary from "../lib/cloudinary.js";
 import Message from "../models/message.model.js";
 import User from "../models/user.model.js";
+import {getReceiverSocketId,io} from "../lib/socket.js"
 
 export const getUsersForSidebar=async(req,res)=>{
     try {
@@ -18,13 +19,15 @@ export const getMessages = async (req,res)=>{
         const {id:userToChatId} = req.params
         const myId = req.user._id
 
-        const message = await Message.find({
-            $or:[
-                {senderId:myId, receiverId:userToChatId},
-                {senderId:userToChatId, receiverId:myId},
-            ]
-        })
-        res.status(200).json({message})
+           const messages = await Message.find({
+      $or: [
+        { senderId: myId, receiverId: userToChatId },
+        { senderId: userToChatId, receiverId: myId },
+      ],
+    });
+
+    res.status(200).json(messages);
+
     } catch (error) {
         console.log("error in getMessages",error.message)
         res.status(500).json({message:"internal server error"})
@@ -33,26 +36,75 @@ export const getMessages = async (req,res)=>{
 
 export const sendMessage = async (req,res)=>{
     try {
-        const {text,image} = req.body
+        const {text} = req.body
         const {id:receiverId} = req.params
         const senderId = req.user._id
 
         let imageUrl;
-        if(image){
-            const uploadeResponse = await clodinary.uploader.upload(image)
-            imageUrl =  uploadeResponse.secure_url
-        }
-        const newMessage = new Message({
-            senderId,
-            receiverId,
-            text,
-            image:imageUrl,
-        });
-        await newMessage.save()
+        if(req.file){
+            const uploadStream = clodinary.uploader.upload_stream(
+                { resource_type: "image", folder: "chat_images" },
+                async (error, result) => {
+                    if (error) {
+                        console.error("Cloudinary upload error:", error);
+                        return res.status(500).json({ message: "Image upload failed" });
+                    }
 
-        res.status(201).json(newMessage)
+                    imageUrl = result.secure_url;
+                    
+                    const newMessage = new Message({
+                        senderId,
+                        receiverId,
+                        text,
+                        image: imageUrl,
+                    });
+                    await newMessage.save()
+                    
+                    const receiverSocketId = getReceiverSocketId(receiverId);
+                    if (receiverSocketId) {
+                        io.to(receiverSocketId).emit("newMessage", newMessage);
+                    }
+
+                    return res.status(201).json(newMessage);
+                }
+            );
+            uploadStream.end(req.file.buffer);
+        } else {
+            const newMessage = new Message({
+                senderId,
+                receiverId,
+                text,
+            });
+            await newMessage.save()
+            
+            const receiverSocketId = getReceiverSocketId(receiverId);
+            if (receiverSocketId) {
+                io.to(receiverSocketId).emit("newMessage", newMessage);
+            }
+
+            return res.status(201).json(newMessage);
+        }
     } catch (error) {
         console.log("error in sendMessage",error.message)
         res.status(500).json({message:"internal server error"})
+    }
+}
+
+export const deleteMessage = async(req,res)=>{
+    
+    try {
+        const message = req.body
+        if(!message) return
+        
+        await Message.findByIdAndDelete (message._id)
+        const receiverSocketId = getReceiverSocketId(message.receiverId);
+        if (receiverSocketId) {
+            io.to(receiverSocketId).emit("deleteMessage", {
+           messageId: message._id,
+              senderId: message.senderId});
+        }
+        return res.status(200).json({message:"message deleted"})
+    } catch (error) {
+        res.status(500).json({message:"internal server error " + error.message})
     }
 }

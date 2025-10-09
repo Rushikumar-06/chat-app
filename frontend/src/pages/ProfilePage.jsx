@@ -18,9 +18,9 @@ const ProfilePage = () => {
   };
 
   return (
-    <div>
-      <div className="mx-auto max-w-2xl p-4 py-8">
-        <div className="rounded-2xl border border-black/5 bg-white/70 p-6 backdrop-blur-sm dark:border-white/10 dark:bg-gray-900/40 space-y-8">
+    <div className="bg-emerald-50 dark:bg-[#0b141a] min-h-[calc(100vh-4rem)]">
+      <div className="mx-auto max-w-2xl pt-16 p-4 py-8">
+        <div className="rounded-2xl border border-emerald-700/20 bg-slate-50 p-6 dark:border-[#2a3942] dark:bg-[#111b21] space-y-8">
           <div className="text-center">
             <h1 className="text-2xl font-semibold">Profile</h1>
             <p className="mt-2 text-gray-600 dark:text-gray-400">Your profile information</p>

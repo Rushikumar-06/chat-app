@@ -26,14 +26,8 @@ function LoginPage() {
     }
   }
   return (
-    <div className="min-h-screen relative overflow-hidden  bg-gradient-to-br from-gray-50 via-white to-gray-50 dark:from-slate-900 dark:via-purple-900 dark:to-slate-900">
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-pulse"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-pulse animation-delay-2000"></div>
-        <div className="absolute top-40 left-1/2 w-80 h-80 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-pulse animation-delay-4000"></div>
-      </div>
-      
-      <div className="relative z-10 grid lg:grid-cols-2 min-h-screen">
+    <div className="min-h-screen pt-16 bg-emerald-50 text-gray-900 dark:bg-[#0b141a] dark:text-gray-100">
+      <div className="grid lg:grid-cols-2 min-h-screen">
         <AuthImagePattern
           title="Welcome back to the community!"
           subtitle="Log in to share your moments and stay connected with the people you care about."
@@ -43,24 +37,19 @@ function LoginPage() {
           <div className="w-full max-w-md">
             <div className="text-center mb-8">
               <div className="flex flex-col items-center gap-4 group">
-                <div className="relative">
-                  <div className="size-16 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                    <MessageSquare className="size-8 text-white" />
-                  </div>
-                  <div className="absolute -top-1 -right-1 size-6 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full flex items-center justify-center">
-                    <Sparkles className="size-3 text-white" />
-                  </div>
+                <div className="size-16 rounded-2xl bg-emerald-600 flex items-center justify-center shadow">
+                  <MessageSquare className="size-8 text-white" />
                 </div>
                 <div>
-                  <h1 className="text-3xl font-bold mb-2 bg-clip-text text-transparent  bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300">
+                  <h1 className="text-3xl font-bold mb-2">
                     Welcome back
                   </h1>
-                  <p className="text-gray-600 dark:text-gray-300 text-lg">Login to your account</p>
+                  <p className="text-gray-600 dark:text-gray-400 text-lg">Login to your account</p>
                 </div>
               </div>
             </div>
 
-            <div className="rounded-3xl shadow-2xl p-8 backdrop-blur-lg border bg-white/80 border-black/10 dark:bg-white/10 dark:border-white/20">
+            <div className="rounded-2xl shadow p-8 border bg-slate-50 border-emerald-700/20 dark:bg-[#111b21] dark:border-[#2a3942]">
               <form onSubmit={handleSubmit} className="space-y-6">
 
                 <div className="space-y-2">
@@ -73,7 +62,7 @@ function LoginPage() {
                     </div>
                     <input
                       type="email"
-                      className="w-full pl-12 pr-4 py-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300 backdrop-blur-sm bg-white border border-black/10 text-gray-900 placeholder-gray-500 dark:bg-white/10 dark:border-white/20 dark:text-white dark:placeholder-gray-400"
+                      className="w-full pl-12 pr-4 py-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-slate-50 border border-emerald-700/20 text-gray-900 placeholder-gray-500 dark:bg-[#202c33] dark:border-[#2a3942] dark:text-gray-100 dark:placeholder-gray-400"
                       placeholder="you@example.com"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -91,7 +80,7 @@ function LoginPage() {
                     </div>
                     <input
                       type={showPassword ? "text" : "password"}
-                      className="w-full pl-12 pr-12 py-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300 backdrop-blur-sm bg-white border border-black/10 text-gray-900 placeholder-gray-500 dark:bg_white/10 dark:bg-white/10 dark:border-white/20 dark:text-white dark:placeholder-gray-400"
+                      className="w-full pl-12 pr-12 py-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-slate-50 border border-emerald-700/20 text-gray-900 placeholder-gray-500 dark:bg-[#202c33] dark:border-[#2a3942] dark:text-gray-100 dark:placeholder-gray-400"
                       placeholder="••••••••"
                       value={formData.password}
                       onChange={(e) => setFormData({ ...formData, password: e.target.value })}
@@ -112,7 +101,7 @@ function LoginPage() {
 
                 <button 
                   type="submit" 
-                  className="w-full py-4 px-6 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 flex items-center justify-center gap-2"
+                  className="w-full py-4 px-6 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-xl shadow transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                   disabled={isLoggingIn}
                 >
                   {isLoggingIn ? (
@@ -130,7 +119,7 @@ function LoginPage() {
                 <span className="text-gray-700 dark:text-gray-300">Don't have an account? </span>
                 <Link 
                   to="/signup" 
-                  className="font-semibold transition-colors hover:underline text-purple-600 hover:text-purple-500 dark:text-purple-400 dark:hover:text-purple-300"
+                  className="font-semibold transition-colors hover:underline text-emerald-700 hover:text-emerald-600 dark:text-emerald-400 dark:hover:text-emerald-300"
                 >
                   sign up
                 </Link>

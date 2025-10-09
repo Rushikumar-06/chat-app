@@ -23,7 +23,7 @@ function App() {
     
   }
   return (
-    <div className="min-h-screen pt-16 bg-gray-50 text-gray-900 dark:bg-gray-950 dark:text-gray-100">
+    <div className="bg-gray-50 text-gray-900 dark:bg-gray-950 dark:text-gray-100">
       <Navbar />
       <Routes>
         <Route path="/" element={authUser?<HomePage/> : <Navigate to="/login"/>}/>
