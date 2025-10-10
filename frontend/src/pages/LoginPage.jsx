@@ -4,7 +4,7 @@ import {MessageSquare,User,Mail,Lock,EyeOff,Eye,Loader2,Sparkles} from "lucide-r
 import { Link } from "react-router-dom";
 import AuthImagePattern from "../components/AuthImagePattern";
 import toast from "react-hot-toast";
-function loginPage() {
+function LoginPage() {
   const [showPassword,setShowPassword] = useState(false);
   const [formData,setFormData] = useState({
     email:"",
@@ -132,4 +132,4 @@ function loginPage() {
   )
 }
 
-export default loginPage
+export default LoginPage
