@@ -40,7 +40,7 @@ function signUpPage() {
     }
   }
   return (
-    <div className="min-h-screen pt-16 bg-emerald-50 text-gray-900 dark:bg-[#0b141a] dark:text-gray-100">
+    <div className="min-h-screen pt-16 bg-[#F0F0F0] text-gray-900 dark:bg-[#0b141a] dark:text-gray-100">
       <div className="grid lg:grid-cols-2 min-h-screen">
         <AuthImagePattern
           title="Join our community"
@@ -51,7 +51,7 @@ function signUpPage() {
           <div className="w-full max-w-md">
             <div className="text-center mb-8">
               <div className="flex flex-col items-center gap-4 group">
-                <div className="size-16 rounded-2xl bg-emerald-600 flex items-center justify-center shadow">
+                <div className="size-16 rounded-2xl bg-[#778899] flex items-center justify-center shadow">
                   <MessageSquare className="size-8 text-white" />
                 </div>
                 <div>
@@ -61,7 +61,7 @@ function signUpPage() {
               </div>
             </div>
 
-            <div className="rounded-2xl shadow p-8 border bg-slate-50 border-emerald-700/20 dark:bg-[#111b21] dark:border-[#2a3942]">
+            <div className="rounded-2xl shadow p-8 border bg-[#FFFFFF] border-[#D3D3D3] dark:bg-[#111b21] dark:border-[#2a3942]">
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="space-y-2">
                   <label className="block text-sm font-semibold text-gray-700 dark:text-gray-200">
@@ -73,7 +73,7 @@ function signUpPage() {
                     </div>
                     <input
                       type="text"
-                      className="w-full pl-12 pr-4 py-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-slate-50 border border-emerald-700/20 text-gray-900 placeholder-gray-500 dark:bg-[#202c33] dark:border-[#2a3942] dark:text-gray-100 dark:placeholder-gray-400"
+                      className="w-full pl-12 pr-4 py-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#778899] focus:border-transparent bg-[#F0F0F0] border border-[#D3D3D3] text-gray-900 placeholder-gray-500 dark:bg-[#202c33] dark:border-[#2a3942] dark:text-gray-100 dark:placeholder-gray-400"
                       placeholder="John Doe"
                       value={formData.fullName}
                       onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
@@ -91,7 +91,7 @@ function signUpPage() {
                     </div>
                     <input
                       type="email"
-                      className="w-full pl-12 pr-4 py-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-slate-50 border border-emerald-700/20 text-gray-900 placeholder-gray-500 dark:bg-[#202c33] dark:border-[#2a3942] dark:text-gray-100 dark:placeholder-gray-400"
+                      className="w-full pl-12 pr-4 py-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#778899] focus:border-transparent bg-[#F0F0F0] border border-[#D3D3D3] text-gray-900 placeholder-gray-500 dark:bg-[#202c33] dark:border-[#2a3942] dark:text-gray-100 dark:placeholder-gray-400"
                       placeholder="you@example.com"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -109,7 +109,7 @@ function signUpPage() {
                     </div>
                     <input
                       type={showPassword ? "text" : "password"}
-                      className="w-full pl-12 pr-12 py-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-slate-50 border border-emerald-700/20 text-gray-900 placeholder-gray-500 dark:bg-[#202c33] dark:border-[#2a3942] dark:text-gray-100 dark:placeholder-gray-400"
+                      className="w-full pl-12 pr-12 py-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#778899] focus:border-transparent bg-[#F0F0F0] border border-[#D3D3D3] text-gray-900 placeholder-gray-500 dark:bg-[#202c33] dark:border-[#2a3942] dark:text-gray-100 dark:placeholder-gray-400"
                       placeholder="••••••••"
                       value={formData.password}
                       onChange={(e) => setFormData({ ...formData, password: e.target.value })}
@@ -137,7 +137,7 @@ function signUpPage() {
                     </div>
                     <input
                       type={showPassword ? "text" : "password"}
-                      className="w-full pl-12 pr-12 py-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-slate-50 border border-emerald-700/20 text-gray-900 placeholder-gray-500 dark:bg-[#202c33] dark:border-[#2a3942] dark:text-gray-100 dark:placeholder-gray-400"
+                      className="w-full pl-12 pr-12 py-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#778899] focus:border-transparent bg-[#F0F0F0] border border-[#D3D3D3] text-gray-900 placeholder-gray-500 dark:bg-[#202c33] dark:border-[#2a3942] dark:text-gray-100 dark:placeholder-gray-400"
                       placeholder="••••••••"
                       value={conformPassword}
                       onChange={(e) => setConformPassword( e.target.value )}
@@ -157,7 +157,7 @@ function signUpPage() {
                 </div>
                 <button 
                   type="submit" 
-                  className="w-full py-4 px-6 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-xl shadow transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                  className="w-full py-4 px-6 bg-[#778899] hover:bg-[#778899]/80 text-white font-semibold rounded-xl shadow transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                   disabled={isSigningUp}
                 >
                   {isSigningUp ? (
@@ -175,7 +175,7 @@ function signUpPage() {
                 <span className="text-gray-700 dark:text-gray-300">Already have an account? </span>
                 <Link 
                   to="/login" 
-                  className="font-semibold transition-colors hover:underline text-emerald-700 hover:text-emerald-600 dark:text-emerald-400 dark:hover:text-emerald-300"
+                  className="font-semibold transition-colors hover:underline text-[#778899] hover:text-[#778899]/80 dark:text-emerald-400 dark:hover:text-emerald-300"
                 >
                   Sign in
                 </Link>

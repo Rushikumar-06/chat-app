@@ -57,7 +57,7 @@ const ChatContainer = () => {
     return (
       <div className="flex-1 flex flex-col overflow-hidden">
         <div className="flex-1 overflow-y-auto">
-          <div className="sticky top-0 z-10 bg-white/70 backdrop-blur-xl dark:bg-gray-900/40">
+          <div className="sticky top-0 z-10 bg-[#F0F0F0] backdrop-blur-xl dark:bg-[#282c34]/40">
             <ChatHeader />
           </div>
           <MessageSkeleton />
@@ -69,8 +69,8 @@ const ChatContainer = () => {
 
   return (
       <div className="flex-1 flex flex-col overflow-hidden">
-        <div className="flex-1 overflow-y-auto bg-[#ffffff] dark:bg-[#0b141a]">
-          <div className="sticky top-0 bg-emerald-200/80 backdrop-blur-xl dark:bg-[#202c33]">
+        <div className="flex-1 overflow-y-auto bg-[#FFFFFF] dark:bg-[#282c34]">
+          <div className="sticky top-0 bg-[#F0F0F0] backdrop-blur-xl dark:bg-[#424651]">
           <ChatHeader />
         </div>
           <div>
@@ -81,7 +81,7 @@ const ChatContainer = () => {
           return (
             <div key={message._id} ref={messageEndRef} className={`flex w-full ${isOwn ? "justify-end" : "justify-start"}`}>
               <div
-                className={`flex items-end gap-2 ${isOwn ? "flex-row-reverse" : "flex-row"}`}
+                className={`flex items-end gap-2 ${isOwn ? "flex-row" : "flex-row-reverse"}`}
                 onMouseEnter={() => setShowDropDown(true, message._id)}
                 onMouseLeave={() => setShowDropDown(false, null)}
               >
@@ -99,11 +99,11 @@ const ChatContainer = () => {
                   </div>
                   {/* Bubble */}
                   <div className={`flex flex-col ${isOwn ? "items-end" : "items-start"}`}>
-                    <time className="mb-1 text-xs text-gray-500 dark:text-gray-400">{formatMessageTime(message.createdAt)}</time>
+                    <time className="mb-1 text-xs text-[#A9A9A9] dark:text-gray-400">{formatMessageTime(message.createdAt)}</time>
                     <div className={`rounded-2xl px-3 py-2 shadow-sm ${
                       isOwn
-                        ? "bg-[#D4EDC0] text-gray-900 dark:text-gray-100 dark:bg-gray-800"
-                        : "bg-[#EDDBDB] text-gray-900 dark:bg-gray-800 dark:text-gray-100"
+                        ? "bg-[#d1f6be] text-black dark:bg-[#9ca2ad] dark:text-white"
+                        : "bg-[#d4ebc6] text-black dark:bg-[#424651] dark:text-white"
                     }`}>
                       {message.image && (
                         <img src={message.image} alt="Attachment" className="sm:max-w-[220px] rounded-md mb-2" />

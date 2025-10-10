@@ -92,14 +92,11 @@ const useChatStore = create((set, get) => ({
      const { selectedUser } = get();
     if (!selectedUser) return;
      
-    console.log("heelo there")
     const socket = useAuthStore.getState().socket;
 
     socket.on("deleteMessage", ({ messageId, senderId }) => {
-       console.log("hit here")
-        const isMessageDeleteFromSelectedUser = senderId === selectedUser._id;
+      const isMessageDeleteFromSelectedUser = senderId === selectedUser._id;
       if (!isMessageDeleteFromSelectedUser) return;
-      console.log("hit here2")
       set({
         messages: get().messages.filter((msg) => msg._id !== messageId),
       });

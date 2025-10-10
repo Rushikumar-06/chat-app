@@ -63,7 +63,7 @@ const MessageInput = () => {
   };
 
   return (
-    <div className="p-4 w-full border-t border-emerald-700/20 bg-emerald-50/80 dark:border-[#2a3942] dark:bg-[#111b21]">
+    <div className="p-4 w-full border-t border-[#D3D3D3] bg-[#F0F0F0] dark:border-[#424651] dark:bg-[#282c34]">
       {imagePreview && (
         <div className="mb-3 flex items-center gap-2">
           <div className="relative">
@@ -74,7 +74,7 @@ const MessageInput = () => {
             />
             <button
               onClick={removeImage}
-              className="absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full bg-gray-200 text-gray-700 dark:bg-gray-800 dark:text-gray-200 flex items-center justify-center"
+              className="absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full bg-[#A9A9A9] text-white dark:bg-[#424651] dark:text-white flex items-center justify-center"
               type="button"
             >
               <X className="size-3" />
@@ -87,7 +87,7 @@ const MessageInput = () => {
         <div className="flex-1 flex gap-2">
           <input
             type="text"
-            className="w-full rounded-xl border border-emerald-700/20 bg-slate-50 px-3 py-2 text-sm shadow-sm placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 dark:border-[#2a3942] dark:bg-[#202c33] dark:placeholder:text-gray-500"
+            className="w-full rounded-xl border border-[#D3D3D3] bg-white px-3 py-2 text-sm shadow-sm placeholder:text-[#A9A9A9] focus:outline-none focus:ring-2 focus:ring-[#A9A9A9] dark:border-[#424651] dark:bg-[#424651] dark:placeholder:text-[#9ca2ad]"
             placeholder="Type a message..."
             value={text}
             onChange={(e) => setText(e.target.value)}
@@ -103,20 +103,20 @@ const MessageInput = () => {
           {!isSendMessageLoading ? (
             <button
               type="button"
-              className={`hidden sm:flex h-10 w-10 items-center justify-center rounded-full transition-colors ${imagePreview ? "text-emerald-500" : "text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800"}`}
+              className={`hidden sm:flex h-10 w-10 items-center justify-center rounded-full transition-colors ${imagePreview ? "text-[#A9A9A9]" : "text-[#A9A9A9] hover:bg-[#F0F0F0] dark:text-[#9ca2ad] dark:hover:bg-[#424651]"}`}
               onClick={() => fileInputRef.current?.click()}
             >
               <Image size={20} />
             </button>
           ) : (
             <div className="flex items-center justify-center px-3">
-              <Loader className="size-5 text-gray-400 animate-spin" />
+              <Loader className="size-5 text-[#A9A9A9] animate-spin dark:text-[#9ca2ad]" />
             </div>
           )}
         </div>
         <button
           type="submit"
-          className="h-10 w-10 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white shadow-sm transition disabled:opacity-50"
+          className="h-10 w-10 rounded-full bg-[#A9A9A9] hover:bg-[#C0C0C0] text-white shadow-sm transition disabled:opacity-50 dark:bg-[#9ca2ad] dark:hover:bg-[#424651]"
           disabled={!text.trim() && !selectedFile}
         >
           <Send size={22} className="mx-auto" />

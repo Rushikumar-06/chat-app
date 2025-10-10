@@ -6,10 +6,10 @@ const SidebarSkeleton = () => {
 
   return (
     <aside
-      className="h-full w-20 lg:w-72 border-r border-black/5 dark:border-white/10 flex flex-col transition-all duration-200"
+      className="h-full w-20 lg:w-72 border-r border-[#D3D3D3] dark:border-[#424651] flex flex-col transition-all duration-200"
     >
       {/* Header */}
-      <div className="border-b border-black/5 dark:border-white/10 w-full p-5">
+      <div className="border-b border-[#D3D3D3] dark:border-[#424651] w-full p-5">
         <div className="flex items-center gap-2">
           <Users className="w-6 h-6" />
           <span className="font-medium hidden lg:block">Contacts</span>
@@ -22,13 +22,13 @@ const SidebarSkeleton = () => {
           <div key={idx} className="w-full p-3 flex items-center gap-3">
             {/* Avatar skeleton */}
             <div className="relative mx-auto lg:mx-0">
-              <div className="size-12 rounded-full bg-gray-200 animate-pulse dark:bg-gray-800" />
+              <div className="size-12 rounded-full bg-[#D3D3D3] animate-pulse dark:bg-[#424651]" />
             </div>
 
             {/* User info skeleton - only visible on larger screens */}
             <div className="hidden lg:block text-left min-w-0 flex-1">
-              <div className="h-4 w-32 mb-2 rounded bg-gray-200 animate-pulse dark:bg-gray-800" />
-              <div className="h-3 w-16 rounded bg-gray-200 animate-pulse dark:bg-gray-800" />
+              <div className="h-4 w-32 mb-2 rounded bg-[#D3D3D3] animate-pulse dark:bg-[#424651]" />
+              <div className="h-3 w-16 rounded bg-[#D3D3D3] animate-pulse dark:bg-[#424651]" />
             </div>
           </div>
         ))}
