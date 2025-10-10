@@ -2,7 +2,7 @@ import { useState } from "react";
 import useAuthStore from "../store/UseAuthStore";
 import { Camera, Mail, User } from "lucide-react";
 
-const ProfilePage = () => {
+const profilePage = () => {
   const { authUser, isUpdatingProfile, updateProfile } = useAuthStore();
 
   const handleImageUpload = async (e) => {
@@ -96,4 +96,4 @@ const ProfilePage = () => {
   );
 };
 
-export default ProfilePage;
+export default profilePage;
