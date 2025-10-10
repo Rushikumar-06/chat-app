@@ -1,10 +1,10 @@
-import  useChatStore  from "../store/UseChatStore";
+import  useChatStore  from "../store/useChatStore";
 import { useEffect, useRef } from "react";
 
 import ChatHeader from "./ChatHeader";
 import MessageInput from "./MessageInput";
 import MessageSkeleton from "./skeletons/MessageSkeleton";
-import  useAuthStore  from "../store/UseAuthStore";
+import  useAuthStore  from "../store/useAuthStore";
 import { formatMessageTime } from "../lib/utils";
 import HoverDropdown from "./HoverDropdown";
 import {Loader} from "lucide-react"

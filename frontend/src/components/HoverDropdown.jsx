@@ -1,5 +1,5 @@
 import { ChevronDown  } from "lucide-react";
-import useChatStore from "../store/UseChatStore";
+import useChatStore from "../store/useChatStore";
 import toast from "react-hot-toast";
 const HoverDropdown = ({message}) => {
   const {deleteMessage} = useChatStore()

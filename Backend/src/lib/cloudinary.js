@@ -1,7 +1,6 @@
 import {v2 as clodinary} from "cloudinary"
 
-import dotenv from "dotenv";
-
+import dotenv from "dotenv"
 dotenv.config();
 
 clodinary.config({
